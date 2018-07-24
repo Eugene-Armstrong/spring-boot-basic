@@ -63,7 +63,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         try {
             for(int i=0;i<employeesList.size();i++){
                 if(employeesList.get(i).getId()==employee.getId()){
-                    employeesList.get(i).setId(employee.getId());
                     employeesList.get(i).setName(employee.getName());
                     employeesList.get(i).setAge(employee.getAge());
                     employeesList.get(i).setGender(employee.getGender());
