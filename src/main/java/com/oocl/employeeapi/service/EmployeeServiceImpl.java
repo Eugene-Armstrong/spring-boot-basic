@@ -32,23 +32,29 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteEmployee(int id) {
         try {
-//            for(int i=0;i<employeesList.size();i++){
-//                if(employeesList.get(i).getId()==id){
-//                    employeesList.remove(i);
-//                    break;
-//                }
-//            }
+            for(int i=0;i<employeesList.size();i++){
+                if(employeesList.get(i).getId()==id){
+                    employeesList.remove(i);
+                    break;
+                }
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     @Override
-    public void queryEmployee(int id) {
+    public Employee queryEmployee(int id) {
         try {
-            //
+            for(int i=0;i<employeesList.size();i++){
+                if(employeesList.get(i).getId()==id){
+                    return employeesList.get(i);
+                }
+            }
+            return null;
         }catch (Exception e){
             e.printStackTrace();
+            return null;
         }
     }
 

@@ -26,9 +26,14 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/employees")
-    public ArrayList<Employee> deleteEmployee(int id){
+    public ArrayList<Employee> deleteEmployee(@RequestParam int id){
         employeeServiceIpml.deleteEmployee(id);
         return employeeServiceIpml.getAllEmployee();
+    }
+
+    @PatchMapping("/employees")
+    public Employee queryEmployee(@RequestParam int id){
+        return employeeServiceIpml.queryEmployee(id);
     }
 
     @RequestMapping("/employees")
