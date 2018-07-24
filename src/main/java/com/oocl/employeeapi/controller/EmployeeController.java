@@ -6,38 +6,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
+@RequestMapping("/employees")
 public class EmployeeController {
 
     @Autowired
     private EmployeeServiceImpl employeeServiceIpml;
 
-    @GetMapping("/employees")
+    @GetMapping("")
     public ArrayList<Employee> getAllEmployees(){
         return employeeServiceIpml.getAllEmployee();
     }
 
-    @PostMapping("/employees")
-    public ArrayList<Employee> addEmployee(Employee e){
-        employeeServiceIpml.addEmployee(e);
+    @PostMapping("")
+    public ArrayList<Employee> addEmployee(@RequestBody Employee employee){
+        employeeServiceIpml.addEmployee(employee);
         return employeeServiceIpml.getAllEmployee();
     }
 
-    @DeleteMapping("/employees")
-    public ArrayList<Employee> deleteEmployee(@RequestParam int id){
+    @DeleteMapping("{id}")
+    public ArrayList<Employee> deleteEmployee(@PathVariable int id){
         employeeServiceIpml.deleteEmployee(id);
         return employeeServiceIpml.getAllEmployee();
     }
 
-    @PatchMapping("/employees")
-    public Employee queryEmployee(@RequestParam int id){
+    @PutMapping("{id}")
+    public Employee queryEmployee(@PathVariable int id){
         return employeeServiceIpml.queryEmployee(id);
     }
 
-    @RequestMapping("/employees")
-    public String index() {
-        return "Hello Employees";
+    @PatchMapping("")
+    public ArrayList<Employee> updateEmployee(@RequestBody Employee employee){
+        employeeServiceIpml.updateEmployee(employee);
+        return employeeServiceIpml.getAllEmployee();
     }
+
 }
